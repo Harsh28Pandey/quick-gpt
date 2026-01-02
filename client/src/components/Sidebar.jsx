@@ -3,13 +3,13 @@ import { useAppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import moment from 'moment'
 
-const Sidebar = () => {
+const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
 
     const { chats, setSelectedChat, theme, setTheme, user, navigate } = useAppContext()
     const [search, setSearch] = useState('')
 
     return (
-        <div className='flex flex-col h-screen min-w-72 p-5 dark:bg-linear-to-b from-[#242124]/30 to-[#000000]/30 border-r border-[#80609f]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1'>
+        <div className={`flex flex-col h-screen min-w-72 p-5 dark:bg-linear-to-b from-[#222222]/30 to-[#000000]/30 border-r border-[#80609f]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && 'max-md:-translate-x-full'}`}>
             {/* logo */}
             <img
                 className='w-full max-w-48'
@@ -23,7 +23,7 @@ const Sidebar = () => {
             </button>
 
             {/* search conversations */}
-            <div className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/20 rounded-full'>
+            <div className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-[#333333] rounded-full'>
                 <img src={assets.search_icon} className='w-4 not-dark:invert' alt="" />
                 <input
                     onChange={(e) => setSearch(e.target.value)}
@@ -39,7 +39,10 @@ const Sidebar = () => {
             <div className='flex-1 overflow-y-scroll mt-3 text-sm space-y-3'>
                 {
                     chats.filter((chat) => chat.messages[0] ? chat.messages[0]?.content.toLowerCase().includes(search.toLowerCase()) : chat.name.toLowerCase().includes(search.toLowerCase())).map((chat) => (
-                        <div key={chat._id} className='p-2 px-4 dark:bg-[#57317c]/10 border border-gray-300 dark:border-[#80609f]/15 rounded-full cursor-pointer flex justify-between group'>
+                        <div
+                            onClick={() => { navigate('/'); setSelectedChat(chat); setIsMenuOpen(false) }}
+                            key={chat._id}
+                            className='p-2 px-4 dark:bg-[#262626] border border-gray-300 dark:border-[#333333] rounded-3xl cursor-pointer flex justify-between group'>
                             <div>
                                 <p className='truncate w-full'>
                                     {chat.messages.length > 0 ? chat.messages[0].content.slice(0, 32) : chat.name}
@@ -53,7 +56,7 @@ const Sidebar = () => {
             </div>
 
             {/* community images */}
-            <div onClick={() => { navigate('/community') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/15 rounded-full cursor-pointer hover:scale-103 transitio-all'>
+            <div onClick={() => { navigate('/community'); setIsMenuOpen(false) }} className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/15 rounded-full cursor-pointer hover:scale-103 transitio-all'>
                 <img src={assets.gallery_icon} className='w-4.5 not-dark:invert' alt="" />
                 <div className='flex flex-col text-sm'>
                     <p>Community Images</p>
@@ -61,7 +64,7 @@ const Sidebar = () => {
             </div>
 
             {/* credits purchase option */}
-            <div onClick={() => { navigate('/credits') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/15 rounded-full cursor-pointer hover:scale-103 transitio-all'>
+            <div onClick={() => { navigate('/credits'); setIsMenuOpen(false) }} className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/15 rounded-full cursor-pointer hover:scale-103 transitio-all'>
                 <img src={assets.diamond_icon} className='w-4.5 dark:invert' alt="" />
                 <div className='flex flex-col text-sm'>
                     <p>Credits : {user?.credits}</p>
@@ -92,7 +95,7 @@ const Sidebar = () => {
             </div>
 
             {/* close icon only for mobile phone */}
-            <img src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert' alt="" />
+            <img onClick={() => setIsMenuOpen(false)} src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert' alt="" />
 
 
         </div>
