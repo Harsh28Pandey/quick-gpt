@@ -99,6 +99,11 @@ npm init -y
 | 7   | JWT              | `npm install jsonwebtoken`       | [Link](https://jwt.io)                              |
 | 8   | bcryptjs         | `npm install bcryptjs`           | [Link](https://www.npmjs.com/package/bcryptjs)      |
 | 9   | cookie-parser    | `npm install cookie-parser `     | [Link](https://www.npmjs.com/package/cookie-parser) |
+gemini-api
+imagekit
+openai
+stripe
+svix
 
 ---
 

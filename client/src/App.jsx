@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Sidebar from './components/Sidebar'
+import Sidebar from './components/Sidebar.jsx'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import ChatBox from './components/ChatBox'
-import Credits from './pages/Credits'
-import Community from './pages/Community'
+import ChatBox from './components/ChatBox.jsx'
+import Credits from './pages/Credits.jsx'
+import Community from './pages/Community.jsx'
 import { assets } from './assets/assets'
 import './assets/prism.css'
-import Loading from './pages/Loading'
-import { useAppContext } from './context/AppContext'
-import Login from './pages/Login'
+import Loading from './pages/Loading.jsx'
+import { useAppContext } from './context/AppContext.jsx'
+import Login from './pages/Login.jsx'
 
 const App = () => {
 
