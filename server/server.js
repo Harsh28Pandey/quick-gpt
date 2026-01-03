@@ -30,8 +30,14 @@ app.use('/api/chat', chatRouter)
 app.use('/api/message', messageRouter)
 app.use('/api/credit', creditRouter)
 
-const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log(`Server is Running on port: ${PORT}`)
-})
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 3000
+
+    server.listen(PORT, () => {
+        console.log(`Server is Running on port: ${PORT}`)
+    })
+}
+
+// export server for vercel
+export default server
