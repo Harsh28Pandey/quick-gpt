@@ -35,14 +35,14 @@ const ChatBox = () => {
     }, [messages])
 
     return (
-        <div className='flex-1 flex flex-col justify-between m-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40'>
+        <div className='flex-1 flex flex-col justify-between mx-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40'>
 
             {/* chat messages */}
-            <div ref={containerRef} className='flex-1 mb-5 overflow-y-scroll'>
+            <div ref={containerRef} className='flex-1 overflow-y-auto overscroll-contain'>
                 {messages.length === 0 && (
                     <div className='h-full flex flex-col items-center justify-center gap-2 text-primary'>
                         <img src={theme === 'dark' ? assets.logo_full : assets.logo_full_dark} className='w-full max-w-56 sm:max-w-68' alt="" />
-                        <p className='mt-5 text-4xl sm:text-6xl text-center text-gray-500 dark:text-[#e5e7eb]'>Ask me Anything...</p>
+                        <p className='mt-5 text-2xl sm:text-4xl text-center text-gray-500 dark:text-[#e5e7eb]'>Ask me Anything...</p>
                     </div>
                 )}
 

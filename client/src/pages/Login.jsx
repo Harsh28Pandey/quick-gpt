@@ -12,7 +12,7 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-88 text-gray-500 rounded-xl shadow-xl border border-gray-200 bg-white">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-88 text-gray-500 rounded-xl shadow-xl border border-gray-200 bg-purple/60 backdrop-blur-xl">
             <p className="text-2xl font-medium m-auto">
                 <span className="text-purple-700">QuickGPT</span> {state === "login" ? "🚀 Login" : "🤖 Sign Up"}
             </p>
