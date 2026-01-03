@@ -61,7 +61,7 @@ const Credits = () => {
                     >
 
                         {/* hover overlay */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-tr from-purple-500/5 to-pink-500/5 pointer-events-none"></div>
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-tr from-purple-500/5 to-pink-500/5 pointer-events-none"></div>
 
                         {/* Badge */}
                         {plan._id === "pro" && (
