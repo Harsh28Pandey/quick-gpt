@@ -55,15 +55,16 @@ npm run dev
 
 ## 🎨 Frontend Requirements (React)
 
-| No. | 🛠 Tool / Package | 💻 Installation Command                     | 🔗 Link                         |
-| --- | ---------------- | ------------------------------------------- | ------------------------------- |
-| 1   | Vite             | `npm create vite@latest frontend`           | [Link](https://vitejs.dev)      |
-| 2   | React            | Installed via Vite                          | [Link](https://react.dev)       |
-| 3   | React Router DOM | `npm install react-router-dom`              | [Link](https://reactrouter.com) |
-| 4   | Axios            | `npm install axios`                         | [Link](https://axios-http.com)  |
-| 5   | Tailwind CSS     | `npm install tailwindcss @tailwindcss/vite` | [Link](https://tailwindcss.com) |
-| 6   | Moment.js        | `npm install moment`                        | [Link](https://momentjs.com/)   |
-| 7   | Prism.js         | `npm install prismjs`                       | [Link](https://prismjs.com/)    |
+| No. | 🛠 Tool / Package | 💻 Installation Command                     | 🔗 Link                                            |
+| --- | ---------------- | ------------------------------------------- | -------------------------------------------------- |
+| 1   | Vite             | `npm create vite@latest frontend`           | [Link](https://vitejs.dev)                         |
+| 2   | React            | Installed via Vite                          | [Link](https://react.dev)                          |
+| 3   | React Router DOM | `npm install react-router-dom`              | [Link](https://reactrouter.com)                    |
+| 4   | Axios            | `npm install axios`                         | [Link](https://axios-http.com)                     |
+| 5   | Tailwind CSS     | `npm install tailwindcss @tailwindcss/vite` | [Link](https://tailwindcss.com)                    |
+| 6   | Moment.js        | `npm install moment`                        | [Link](https://momentjs.com/)                      |
+| 7   | Prism.js         | `npm install prismjs`                       | [Link](https://prismjs.com/)                       |
+| 8   | React-Markdown   | `npm install react-markdown`                | [Link](https://github.com/remarkjs/react-markdown) |
 
 ---
 
