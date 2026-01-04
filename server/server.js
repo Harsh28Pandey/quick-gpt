@@ -1,6 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import cors from 'cors'
+import http from "http"
 import connectDB from './configs/db.js'
 import userRouter from './routes/UserRoutes.js'
 import chatRouter from './routes/chatRoutes.js'
@@ -13,6 +14,7 @@ import { stripeWebhooks } from './controllers/webhooks.js'
 
 
 const app = express()
+const server = http.createServer(app)
 
 await connectDB()
 
@@ -37,11 +39,9 @@ app.use('/api/credit', creditRouter)
 const PORT = process.env.PORT || 3000
 
 if (process.env.NODE_ENV !== "production") {
-    app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
-        console.log("NODE_ENV:", process.env.NODE_ENV);
-        console.log("PORT:", PORT);
-    });
+    const PORT = process.env.PORT || 3000
+    server.listen(PORT, () => console.log("Server is running on Port: " + PORT))
 }
 
-export default app;
+// export server for vercel to deploy our QuickChat
+export default server
