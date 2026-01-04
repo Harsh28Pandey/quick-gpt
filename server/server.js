@@ -10,7 +10,7 @@ import { stripeWebhooks } from './controllers/webhooks.js'
 
 const app = express()
 
-await connectDB()
+// await connectDB()
 
 // Stripe Webhooks
 app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks)
@@ -18,6 +18,12 @@ app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhook
 // middleware
 app.use(cors())
 app.use(express.json())
+
+// database
+app.get("/api/test", async (req, res) => {
+    await connectDB();
+    res.json({ success: true });
+});
 
 // routes
 app.get('/', (req, res) => {
@@ -32,6 +38,12 @@ app.use('/api/credit', creditRouter)
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log(`Server is Running on port: ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`Server is Running on port: ${PORT}`)
+// })
+
+app.get("/", (req, res) => {
+    res.send("Server running on Vercel");
+});
+
+export default app;
