@@ -1,47 +1,44 @@
-import express from 'express'
-import 'dotenv/config'
-import cors from 'cors'
-import http from "http"
-import connectDB from './configs/db.js'
-import userRouter from './routes/UserRoutes.js'
-import chatRouter from './routes/chatRoutes.js'
-import messageRouter from './routes/messageRoutes.js'
-import creditRouter from './routes/creditRoutes.js'
-import { stripeWebhooks } from './controllers/webhooks.js'
+import express from "express";
+import 'dotenv/config';
+import cors from "cors";
+import connectDB from "./configs/db.js";
+import userRouter from "./routes/UserRoutes.js";
+import chatRouter from "./routes/chatRoutes.js";
+import messageRouter from "./routes/messageRoutes.js";
+import creditRouter from "./routes/creditRoutes.js";
+import { stripeWebhooks } from "./controllers/webhooks.js";
 
-// console.log("NODE_ENV:", process.env.NODE_ENV);
-// console.log("PORT:", process.env.PORT);
+const app = express();
 
-
-const app = express()
-const server = http.createServer(app)
-
-await connectDB()
+app.use(cors());
+app.use(express.json());
 
 // Stripe Webhooks
-app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks)
+app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks);
 
-// middleware
-app.use(cors())
-app.use(express.json())
+// Test DB connection
+app.get("/api/test", async (req, res) => {
+    try {
+        await connectDB();
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
 
-// routes
-app.get('/', (req, res) => {
-    res.send("Server is Live...")
-})
+// Routes
+app.use('/api/user', userRouter);
+app.use('/api/chat', chatRouter);
+app.use('/api/message', messageRouter);
+app.use('/api/credit', creditRouter);
 
-// api's
-app.use('/api/user', userRouter)
-app.use('/api/chat', chatRouter)
-app.use('/api/message', messageRouter)
-app.use('/api/credit', creditRouter)
+// Root
+app.get('/', (req, res) => res.send("Server is Live..."));
 
-const PORT = process.env.PORT || 3000
-
+// ✅ Local dev only
+const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== "production") {
-    const PORT = process.env.PORT || 3000
-    server.listen(PORT, () => console.log("Server is running on Port: " + PORT))
+    app.listen(PORT, () => console.log(`Server running on http://localhost: ${PORT}`));
 }
 
-// export server for vercel to deploy our QuickChat
-export default server
+export default app;
