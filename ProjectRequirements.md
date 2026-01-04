@@ -65,6 +65,7 @@ npm run dev
 | 6   | Moment.js        | `npm install moment`                        | [Link](https://momentjs.com/)                      |
 | 7   | Prism.js         | `npm install prismjs`                       | [Link](https://prismjs.com/)                       |
 | 8   | React-Markdown   | `npm install react-markdown`                | [Link](https://github.com/remarkjs/react-markdown) |
+| 8   | React-Hot-Toast  | `npm install react-hot-toast`               | [Link](https://react-hot-toast.com/)               |
 
 ---
 
@@ -98,12 +99,11 @@ npm init -y
 | 6   | Nodemon          | `npm install --save-dev nodemon` | [Link](https://npmjs.com/package/nodemon)           |
 | 7   | JWT              | `npm install jsonwebtoken`       | [Link](https://jwt.io)                              |
 | 8   | bcryptjs         | `npm install bcryptjs`           | [Link](https://www.npmjs.com/package/bcryptjs)      |
-| 9   | cookie-parser    | `npm install cookie-parser `     | [Link](https://www.npmjs.com/package/cookie-parser) |
-gemini-api
-imagekit
-openai
-stripe
-svix
+| 9   | cookie-parser    | `npm install cookie-parser`      | [Link](https://www.npmjs.com/package/cookie-parser) |
+| 10  | Image Kit        | `npm install imagekit`           | [Link](https://www.npmjs.com/package/cookie-parser) |
+| 11  | OpenAI           | `npm install openai`             | [Link](https://platform.openai.com/)                |
+| 12  | Stripe           | `npm install stripe`             | [Link](https://stripe.com/docs)                     |
+| 13  | Svix             | `npm install svix`               | [Link](https://www.svix.com/docs)                   |
 
 ---
 
