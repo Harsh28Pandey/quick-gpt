@@ -12,12 +12,22 @@ const app = express()
 
 await connectDB()
 
-// Stripe Webhooks
-app.post('/api/stripe', express.raw({ type: 'application/json' }), stripeWebhooks)
-
 // middleware
-app.use(cors())
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}))
+
 app.use(express.json())
+
+// Stripe Webhooks (raw body ONLY for this route)
+app.post(
+    '/api/stripe',
+    express.raw({ type: 'application/json' }),
+    stripeWebhooks
+)
+
 
 // routes
 app.get('/', (req, res) => {
